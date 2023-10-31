@@ -1,0 +1,19 @@
+{
+  "name": "alt_text_backend",
+  "version": "1.0.0",
+  "description": "Backend server for Alt Text Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dheeraj0650/AltTextBackend.git"
+  },
+  "author": "Dheeraj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dheeraj0650/AltTextBackend/issues"
+  },
+  "homepage": "https://github.com/Dheeraj0650/AltTextBackend#readme"
+}
