@@ -1,0 +1,6 @@
+version: "3"
+services:
+  backend:
+    image: "dheeraj0650/alttextbackendserver:1.0"
+    ports:
+      - "7000:7000"
