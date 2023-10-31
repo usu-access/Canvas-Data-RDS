@@ -4,3 +4,4 @@ services:
     image: "dheeraj0650/alttextbackendserver:1.0"
     ports:
       - "7000:7000"
+    restart: always
