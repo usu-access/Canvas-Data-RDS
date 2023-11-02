@@ -11,7 +11,9 @@ if (port == null || port == "") {
   port = 7000;
 }
 
+console.log("start");
 console.log(process.env);
+console.log("end");
 
 var con = mysql.createConnection({
     host: "localhost",
@@ -35,4 +37,5 @@ app.get("/", function(req, res) {
 
 app.listen(port, function() {
     console.log("Server started");
+    console.log(process.env);
 });
