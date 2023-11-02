@@ -12,7 +12,7 @@ if (port == null || port == "") {
 }
 
 console.log("start");
-console.log(process.env);
+console.log(process.env.env);
 console.log("end");
 
 var con = mysql.createConnection({
@@ -37,5 +37,4 @@ app.get("/", function(req, res) {
 
 app.listen(port, function() {
     console.log("Server started");
-    console.log(env);
 });
