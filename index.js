@@ -1,4 +1,4 @@
-require('dotenv').config({path:'/var/lib/jenkins'});
+require('dotenv').config({path:__dirname + '/../..'});
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
@@ -35,4 +35,6 @@ app.get("/", function(req, res) {
 app.listen(port, function() {
     console.log("Server started");
     console.log(process.env);
+    console.log(__dirname);
+    console.log(__dirname + '/../..');
 });
