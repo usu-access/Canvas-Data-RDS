@@ -17,11 +17,6 @@ var con = mysql.createConnection({
     password: process.env.password,
     database: process.env.db
 });
-  
-con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-});
 
 // con.connect(function(err) {
 //     if (err) throw err;
@@ -37,6 +32,10 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get("/", function(req, res) {
+    con.connect(function(err) {
+        if (err) throw err;
+        console.log("Connected!");
+    });
     res.send("<h1>Successful</h1>");
 });
 
