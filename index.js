@@ -2,6 +2,7 @@ require('dotenv').config({path:__dirname + '/../..'});
 const express = require('express');
 const bodyParser = require('body-parser');
 const { Client } = require('pg')
+var mysql = require('mysql');
 
 const app = express();
 
@@ -11,15 +12,27 @@ if (port == null || port == "") {
   port = 7000;
 }
 
-const client = new Client({
+// const client = new Client({
+//   user: process.env.user,
+//   host: process.env.host,
+//   database: process.env.db,
+//   password: process.env.password,
+//   port: 5432
+// })
+
+// client.connect(function(err) {
+//   if (err) throw err;
+//   console.log("Connected!");
+// });
+
+var con = mysql.createConnection({
   user: process.env.user,
   host: process.env.host,
   database: process.env.db,
-  password: process.env.password,
-  port: 5432
-})
+  password: process.env.password
+});
 
-client.connect(function(err) {
+con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
 });
