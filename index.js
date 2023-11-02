@@ -20,11 +20,16 @@ var con = mysql.createConnection({
   
 con.connect(function(err) {
     if (err) throw err;
-    con.query("SELECT table_name FROM information_schema.tables WHERE table_schema = 'dev'", function (err, result, fields) {
-      if (err) throw err;
-      console.log(result);
-    });
-  });
+    console.log("Connected!");
+});
+
+// con.connect(function(err) {
+//     if (err) throw err;
+//     con.query("SELECT table_name FROM information_schema.tables WHERE table_schema = 'dev'", function (err, result, fields) {
+//       if (err) throw err;
+//       console.log(result);
+//     });
+// });
 
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({
