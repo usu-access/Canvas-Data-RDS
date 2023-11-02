@@ -11,10 +11,6 @@ if (port == null || port == "") {
   port = 7000;
 }
 
-console.log("start");
-console.log(process.env.env.user);
-console.log("end");
-
 var con = mysql.createConnection({
     host: "localhost",
     user: "yourusername",
