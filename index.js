@@ -12,7 +12,7 @@ if (port == null || port == "") {
 }
 
 console.log("start");
-console.log(process.env.env);
+console.log(process.env.env.user);
 console.log("end");
 
 var con = mysql.createConnection({
