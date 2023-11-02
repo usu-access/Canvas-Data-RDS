@@ -1,7 +1,7 @@
 require('dotenv').config({path:__dirname + '/../..'});
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
+const { Client } = require('pg')
 
 const app = express();
 
@@ -11,20 +11,18 @@ if (port == null || port == "") {
   port = 7000;
 }
 
-var con = mysql.createConnection({
-    host: process.env.host,
-    user: process.env.user,
-    password: process.env.password,
-    database: process.env.db
-});
+const client = new Client({
+  user: process.env.user,
+  host: process.env.host,
+  database: process.env.db,
+  password: process.env.password,
+  port: 5432
+})
 
-// con.connect(function(err) {
-//     if (err) throw err;
-//     con.query("SELECT table_name FROM information_schema.tables WHERE table_schema = 'dev'", function (err, result, fields) {
-//       if (err) throw err;
-//       console.log(result);
-//     });
-// });
+client.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
 
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({
@@ -32,10 +30,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get("/", function(req, res) {
-    con.connect(function(err) {
-        if (err) throw err;
-        console.log("Connected!");
-    });
     res.send("<h1>Successful</h1>");
 });
 
