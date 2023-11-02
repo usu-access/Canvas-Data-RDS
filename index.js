@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({path:'/var/lib/jenkins'});
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
