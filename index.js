@@ -20,8 +20,11 @@ var con = mysql.createConnection({
   
 con.connect(function(err) {
     if (err) throw err;
-    console.log("Connected!");
-});
+    con.query("SELECT table_name FROM information_schema.tables WHERE table_schema = 'dev'", function (err, result, fields) {
+      if (err) throw err;
+      console.log(result);
+    });
+  });
 
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({
@@ -34,7 +37,4 @@ app.get("/", function(req, res) {
 
 app.listen(port, function() {
     console.log("Server started");
-    console.log(process.env);
-    console.log(__dirname);
-    console.log(__dirname + '/../..');
 });
