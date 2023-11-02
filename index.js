@@ -42,4 +42,8 @@ app.get("/", function(req, res) {
 
 app.listen(port, function() {
     console.log("Server started");
+    console.log(process.env.host);
+    console.log(process.env.user);
+    console.log(process.env.password);
+    console.log(process.env.db);
 });
