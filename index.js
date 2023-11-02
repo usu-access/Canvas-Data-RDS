@@ -12,9 +12,10 @@ if (port == null || port == "") {
 }
 
 var con = mysql.createConnection({
-    host: "localhost",
-    user: "yourusername",
-    password: "yourpassword"
+    host: process.env.host,
+    user: process.env.user,
+    password: process.env.password,
+    database: process.env.db
 });
   
 con.connect(function(err) {
