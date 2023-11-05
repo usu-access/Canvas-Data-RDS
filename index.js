@@ -25,17 +25,6 @@ if (port == null || port == "") {
 //   console.log("Connected!");
 // });
 
-var con = mysql.createConnection({
-  user: process.env.user,
-  host: process.env.host,
-  database: process.env.db,
-  password: process.env.password
-});
-
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-});
 
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({
@@ -43,6 +32,17 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get("/", function(req, res) {
+  var con = mysql.createConnection({
+    user: process.env.user,
+    host: process.env.host,
+    database: process.env.db,
+    password: process.env.password
+  });
+  
+  con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+  });
     res.send("<h1>Successful</h1>");
 });
 
