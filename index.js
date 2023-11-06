@@ -12,18 +12,18 @@ if (port == null || port == "") {
   port = 7000;
 }
 
-// const client = new Client({
-//   user: process.env.user,
-//   host: process.env.host,
-//   database: process.env.db,
-//   password: process.env.password,
-//   port: 5432
-// })
+const client = new Client({
+  user: process.env.user,
+  host: process.env.host,
+  database: process.env.db,
+  password: process.env.password,
+  port: 5432
+})
 
-// client.connect(function(err) {
-//   if (err) throw err;
-//   console.log("Connected!");
-// });
+client.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
 
 
 app.use(express.static(__dirname + "/public"));
@@ -32,17 +32,17 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get("/", function(req, res) {
-  var con = mysql.createConnection({
-    user: process.env.user,
-    host: process.env.host,
-    database: process.env.db,
-    password: process.env.password
-  });
+  // var con = mysql.createConnection({
+  //   user: process.env.user,
+  //   host: process.env.host,
+  //   database: process.env.db,
+  //   password: process.env.password
+  // });
   
-  con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-  });
+  // con.connect(function(err) {
+  //   if (err) throw err;
+  //   console.log("Connected!");
+  // });
     res.send("<h1>Successful</h1>");
 });
 
