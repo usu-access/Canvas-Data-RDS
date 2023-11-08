@@ -18,7 +18,11 @@ const client = new Client({
   database: process.env.db,
   password: process.env.password,
   port: 5432,
-  ssl: false
+  ssl: {
+    ca: fs
+      .readFileSync("./global-bundle.pem")
+      .toString()
+  }
 })
 
 client.connect(function(err) {
