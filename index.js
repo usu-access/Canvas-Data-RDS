@@ -2,7 +2,6 @@ require('dotenv').config({path:__dirname + '/../..'});
 const express = require('express');
 const bodyParser = require('body-parser');
 const { Client } = require('pg')
-var mysql = require('mysql');
 const fs = require("fs");
 
 const app = express();
@@ -38,17 +37,18 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get("/", function(req, res) {
-  // var con = mysql.createConnection({
-  //   user: process.env.user,
-  //   host: process.env.host,
-  //   database: process.env.db,
-  //   password: process.env.password
-  // });
-  
-  // con.connect(function(err) {
-  //   if (err) throw err;
-  //   console.log("Connected!");
-  // });
+
+  const query = `SELECT table_name FROM information_schema.tables WHERE table_schema = 'dev';`;
+
+    client.query(query, (err, res) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        console.log('Table is successfully created');
+        client.end();
+    });
+
     res.send("<h1>Successful</h1>");
 });
 
