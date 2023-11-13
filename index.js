@@ -38,15 +38,16 @@ app.use(bodyParser.urlencoded({
 
 app.get("/", function(req, res) {
 
-  const query = `SELECT table_name FROM information_schema.tables WHERE table_schema = 'dev';`;
-
-    client.query(query, (err, res) => {
+  const query = `SELECT table_name FROM information_schema.tables;`;
+  
+  client.query(query, (err, res) => {
         if (err) {
             console.error(err);
             return;
         }
-        console.log(res);
-        console.log('Table is successfully created');
+        for (let row of res.rows) {
+            console.log(row);
+        }
         client.end();
     });
 
