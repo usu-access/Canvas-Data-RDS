@@ -38,7 +38,8 @@ app.use(bodyParser.urlencoded({
 
 app.get("/", function(req, res) {
 
-  const query = `SELECT table_name FROM information_schema.tables;`;
+  const query = `SELECT * FROM courses_summary;`;
+  const query2 = `SELECT * FROM content_items;`
   
   client.query(query, (err, res) => {
         if (err) {
@@ -50,6 +51,17 @@ app.get("/", function(req, res) {
         }
         client.end();
     });
+
+    client.query(query2, (err, res) => {
+      if (err) {
+          console.error(err);
+          return;
+      }
+      for (let row of res.rows) {
+          console.log(row);
+      }
+      client.end();
+  });
 
     res.send("<h1>Successful</h1>");
 });
