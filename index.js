@@ -45,6 +45,7 @@ app.get("/", function(req, res) {
             console.error(err);
             return;
         }
+        console.log(res);
         console.log('Table is successfully created');
         client.end();
     });
