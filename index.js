@@ -38,17 +38,16 @@ app.use(bodyParser.urlencoded({
 
 app.get("/", function(req, res) {
 
-  const query = `SELECT * FROM filtered_courses_cte`;
+  const query = `SELECT table_name FROM information_schema.tables;`;
   
   client.query(query, (err, res) => {
         if (err) {
             console.error(err);
             return;
         }
-        console.log(res);
-        // for (let row of res.rows) {
-        //     console.log(row);
-        // }
+        for (let row of res.rows) {
+            console.log(row);
+        }
         client.end();
     });
 
