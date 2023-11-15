@@ -48,7 +48,6 @@ app.get("/", function(req, res) {
         for (let row of res.rows) {
             console.log(row);
         }
-        client.end();
     });
 
     res.send("<h1>Successful</h1>");
