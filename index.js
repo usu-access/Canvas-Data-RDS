@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({
 
 app.get("/", function(req, res) {
 
-  const query = `SELECT * FROM curated.courses_summary;`;
+  const query = `SELECT * FROM curated.courses_summary WHERE course_id=737725;`;
   
   client.query(query, (err, res) => {
         if (err) {
