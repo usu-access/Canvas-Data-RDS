@@ -45,9 +45,10 @@ app.get("/", function(req, res) {
             console.error(err);
             return;
         }
-        for (let row of res.rows) {
-            console.log(row);
-        }
+        console.log(res);
+        // for (let row of res.rows) {
+        //     console.log(row);
+        // }
         client.end();
     });
 
