@@ -38,37 +38,13 @@ app.use(bodyParser.urlencoded({
 
 app.get("/", function(req, res) {
 
-  const query = `SELECT DISTINCT
-                      crs_group.term_id,
-                      crs_group.context_type as parent_context_type,
-                      crs_group.context_id as parent_context_id,
-                      content.context_type,
-                      content.context_id,
-                      content.unique_content_id,
-                      content.content_type,
-                      content.content_id,
-                      content.content_name,
-                      content.content_url,
-                      content.created_at,
-                      content.updated_at,
-                      content.workflow_state,
-                      content.content_body,
-                      content.content_body_char_length,
-                      content.page_url,
-                      content.assignment_id,
-                      content.old_assignment_id,
-                      content.root_discussion_topic_id
-                    FROM filtered_groups_cte crs_group
-                      JOIN curated.content_items content ON content.context_type = 'Group'
-                            AND content.context_id = crs_group.group_id
-                    WHERE content.updated_at > ((now() at time zone 'utc') - INTERVAL '2 day');`;
+  const query = `SELECT * FROM curated.courses_summary;`;
   
   client.query(query, (err, res) => {
         if (err) {
             console.error(err);
             return;
         }
-        console.log(res);
         for (let row of res.rows) {
             console.log(row);
         }
