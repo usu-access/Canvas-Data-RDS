@@ -23,13 +23,12 @@ const client = new Client({
       .readFileSync("./global-bundle.pem")
       .toString()
   }
-})
+});
 
 client.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
 });
-
 
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({
@@ -50,7 +49,7 @@ app.get("/", function(req, res) {
         }
     });
 
-    res.send("<h1>Not successful</h1>");
+    res.send("<h1>Successful</h1>");
 });
 
 app.listen(port, function() {
