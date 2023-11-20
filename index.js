@@ -50,7 +50,7 @@ app.get("/", function(req, res) {
         }
     });
 
-    res.send("<h1>Not Successful</h1>");
+    res.send("<h1>Not successful</h1>");
 });
 
 app.listen(port, function() {
