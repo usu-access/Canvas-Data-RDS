@@ -37,7 +37,14 @@ app.use(bodyParser.urlencoded({
 
 app.get("/", function(req, res) {
 
-  const query = `SELECT * FROM curated.courses_summary WHERE course_id=737725;`;
+  const query = `CREATE TABLE accessibilitysample (
+    user_id serial PRIMARY KEY,
+    username VARCHAR ( 50 ) UNIQUE NOT NULL,
+    password VARCHAR ( 50 ) NOT NULL,
+    email VARCHAR ( 255 ) UNIQUE NOT NULL,
+    created_on TIMESTAMP NOT NULL,
+          last_login TIMESTAMP 
+  );`;
   
   client.query(query, (err, res) => {
         if (err) {
