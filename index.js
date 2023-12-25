@@ -43,9 +43,8 @@ app.post("/executeQuery", function(req, res) {
 
   // const query = `SELECT * FROM curated.courses_summary WHERE course_id=737725;`;
   const query = req.body.query;
-  const values = req.body.values;
 
-  client.query(query, values, (err, response) => {
+  client.query(query, (err, response) => {
         if (err) {
             console.error(err);
             res.json({error:err});
