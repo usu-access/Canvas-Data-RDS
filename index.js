@@ -35,21 +35,21 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.get("/", function(req, res) {
+app.post("/executeQuery", function(req, res) {
+
+  console.log("Body Params");
+  console.log(req.body);
 
   const query = `SELECT * FROM curated.courses_summary WHERE course_id=737725;`;
   
-  client.query(query, (err, res) => {
+  client.query(query, (err, response) => {
         if (err) {
             console.error(err);
-            return;
+            res.json({error:err});
         }
-        for (let row of res.rows) {
-            console.log(row);
-        }
-    });
 
-    res.send("<h1>Not Successful</h1>");
+        res.json(response);
+    });
 });
 
 app.listen(port, function() {
